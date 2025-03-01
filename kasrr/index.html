@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KASRR - Fashion Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function addToCart(productCategory, productName) {
+            let quantity = prompt(`Enter quantity for ${productName} in ${productCategory}:`, "1");
+            quantity = parseInt(quantity);
+            if (!isNaN(quantity) && quantity > 0) {
+                alert(`${quantity} ${productName} from ${productCategory} added to cart!`);
+            } else {
+                alert("Invalid quantity. Please enter a positive number.");
+            }
+        }
+
+        // Function to toggle the menu visibility
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        /* The Hamburger Icon */
+        .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            display: block;
+            color: #fff;
+        }
+
+        /* Navigation Menu */
+        #menu {
+            display: none;
+            background-color: #333;
+            list-style-type: none;
+            padding: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        #menu.active {
+            display: block;
+        }
+
+        #menu li {
+            padding: 10px;
+        }
+
+        #menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        #menu li a:hover {
+            color: #ff5722;
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none; /* Hide hamburger menu on larger screens */
+            }
+
+            #menu {
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            #menu li {
+                padding: 0 20px;
+            }
+
+            #menu li a {
+                font-size: 20px;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #222;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .promo-text {
+            font-size: 40px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .sub-text {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #ff784e;
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .featured h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 30%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .product img:hover {
+            transform: scale(1.1);
+        }
+
+        .product h3 {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #ff5722;
+        }
+
+        .product p {
+            font-size: 18px;
+            color: #ccc;
+            margin: 5px 0;
+        }
+
+        .product button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .product button:hover {
+            background-color: #ff784e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1a1a1a;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">KASRR</div>
+        <nav>
+            <!-- Hamburger icon (☰) for small screens -->
+            <span class="hamburger" onclick="toggleMenu()">☰</span>
+            <!-- The menu itself -->
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#pants-section">Men</a></li>
+                <li><a href="#onepiece-section">Women</a></li>
+                <li><a href="#tshirt-section">T-Shirts</a></li>
+                <li><a href="mailto:contact@kasrr.com">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="promo-text">Discover the Latest Fashion Trends</h1>
+        <p class="sub-text">Shop the newest arrivals in men’s and women’s fashion</p>
+        <a href="#" class="btn">Shop Now</a>
+    </section>
+
+    <section class="featured">
+        <h2>Featured Collections</h2>
+        
+        <!-- Pants Section (Men) -->
+        <h3 id="pants-section">Pants</h3>
+        <div class="product-grid">
+            <div class="product" data-category="Pants"><img src="images/pant1.jpg" alt="Waist Cargo Jeans Baggy Pant"><h3>Waist Cargo Jeans Baggy Pant</h3><p><strong>Price:</strong> $45.99</p><button class="btn" onclick="addToCart('Pants', 'Waist Cargo Jeans Baggy Pant')">Add to Cart</button></div>
+            <div class="product" data-category="Pants"><img src="images/pant2.jpg" alt="Casual Cargo Pant"><h3>Casual Cargo Pant</h3><p><strong>Price:</strong> $50.99</p><button class="btn" onclick="addToCart('Pants', 'Casual Cargo Pant')">Add to Cart</button></div>
+            <div class="product" data-category="Pants"><img src="images/pant3.jpg" alt="Brown Chino Pant"><h3>Brown Chino Pant</h3><p><strong>Price:</strong> $65.99</p><button class="btn" onclick="addToCart('Pants', 'Brown Chino Pant')">Add to Cart</button></div>
+        </div>
+
+        <!-- Shirts Section -->
+        <h3>Shirts</h3>
+        <div class="product-grid">
+            <div class="product" data-category="Shirts"><img src="images/shirt1.jpg" alt="Formal White Shirt"><h3>Formal White Shirt</h3><p><strong>Price:</strong> $40.99</p><button class="btn" onclick="addToCart('Shirts', 'Formal White Shirt')">Add to Cart</button></div>
+            <div class="product" data-category="Shirts"><img src="images/shirt2.jpg" alt="Casual Blue Denim Shirt"><h3>Casual Blue Denim Shirt</h3><p><strong>Price:</strong> $45.99</p><button class="btn" onclick="addToCart('Shirts', 'Casual Blue Denim Shirt')">Add to Cart</button></div>
+            <div class="product" data-category="Shirts"><img src="images/shirt3.jpg" alt="Checked Flannel Shirt"><h3>Checked Flannel Shirt</h3><p><strong>Price:</strong> $38.99</p><button class="btn" onclick="addToCart('Shirts', 'Checked Flannel Shirt')">Add to Cart</button></div>
+        </div>
+
+        <!-- T-Shirts Section -->
+        <h3 id="tshirt-section">T-Shirts</h3>
+        <div class="product-grid">
+            <div class="product"><img src="images/tshirt1.jpg" alt="Graphic Tee"><h3>Graphic Tee</h3><p><strong>Price:</strong> $25.99</p><button class="btn" onclick="addToCart('T-Shirts', 'Graphic Tee')">Add to Cart</button></div>
+            <div class="product"><img src="images/tshirt2.jpg" alt="Basic White T-Shirt"><h3>Basic White T-Shirt</h3><p><strong>Price:</strong> $19.99</p><button class="btn" onclick="addToCart('T-Shirts', 'Basic White T-Shirt')">Add to Cart</button></div>
+            <div class="product"><img src="images/tshirt3.jpg" alt="Vintage Print T-Shirt"><h3>Vintage Print T-Shirt</h3><p><strong>Price:</strong> $29.99</p><button class="btn" onclick="addToCart('T-Shirts', 'Vintage Print T-Shirt')">Add to Cart</button></div>
+        </div>
+
+        <!-- One-Piece Dresses Section (Women) -->
+        <h3 id="onepiece-section">One-Piece Dresses</h3>
+        <div class="product-grid">
+            <div class="product"><img src="images/onepiece1.jpg" alt="Silver Embroidered Satin Gown"><h3>Silver Embroidered Satin Gown</h3><p><strong>Price:</strong> $130.99</p><button class="btn" onclick="addToCart('One-Piece Dresses', 'Silver Embroidered Satin Gown')">Add to Cart</button></div>
+            <div class="product"><img src="images/onepiece2.jpg" alt="Women's Sequin Cold Shoulder Ruffle Dress"><h3>Women's Sequin Cold Shoulder Ruffle Dress</h3><p><strong>Price:</strong> $99.99</p><button class="btn" onclick="addToCart('One-Piece Dresses', 'Women\'s Sequin Cold Shoulder Ruffle Dress')">Add to Cart</button></div>
+            <div class="product"><img src="images/onepiece3.jpg" alt="Weve Ruomen Lantern Sleeve Dress"><h3>Weve Ruomen Lantern Sleeve Dress</h3><p><strong>Price:</strong> $130.99</p><button class="btn" onclick="addToCart('One-Piece Dresses', 'Weve Ruomen Lantern Sleeve Dress')">Add to Cart</button></
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 KASRR Fashion Store | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
